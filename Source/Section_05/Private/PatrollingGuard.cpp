@@ -2,14 +2,7 @@
 
 #include "PatrollingGuard.h"
 
-void APatrollingGuard::BeginPlay ()
+TArray<AActor*> APatrollingGuard::GetPatrolPoints ()
 {
-	Super::BeginPlay ();
-
-	int32 counter = 0;
-	for (auto& PatrolPoint : PatrolPoints) {
-		if (ensure (PatrolPoint)) {
-			UE_LOG (LogTemp, Warning, TEXT ("%s - PatrolPoint[%i]: %s"), *(GetName ()), counter++, *(PatrolPoint->GetName ()));
-		}
-	}
+	return PatrolPoints;
 }

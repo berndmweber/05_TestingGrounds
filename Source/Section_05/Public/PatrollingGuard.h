@@ -15,7 +15,7 @@ class SECTION_05_API APatrollingGuard : public ATP_ThirdPersonCharacter
 	GENERATED_BODY()
 
 public:
-	virtual void BeginPlay () override;
+	TArray<AActor*> GetPatrolPoints ();
 	
 protected:
 	UPROPERTY(EditInstanceOnly, Category = "Patrol Route")

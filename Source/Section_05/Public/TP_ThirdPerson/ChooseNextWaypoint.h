@@ -23,4 +23,12 @@ public:
 protected:
 	UPROPERTY (EditAnywhere, Category = "Blackboard")
 	struct FBlackboardKeySelector IndexKey;
+
+	UPROPERTY (EditAnywhere, Category = "Blackboard")
+	struct FBlackboardKeySelector WaypointKey;
+
+private:
+	TArray<AActor*> GetPatrolPoints (UBehaviorTreeComponent& OwnerComp);
+	int32 SetNextWaypoint (UBlackboardComponent& BlackboardComp, TArray<AActor*> PatrolPoints);
+	void CycleIndex (UBlackboardComponent& BlackboardComp, TArray<AActor*> PatrolPoints, int32 Index);
 };
