@@ -1,7 +1,7 @@
 // Copyright 2017 Red Rabbit Games, Inc.
 
 #include "ChooseNextWaypoint.h"
-#include "PatrollingGuard.h"
+#include "PatrolRouteComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "AIController.h"
 
@@ -24,9 +24,15 @@ EBTNodeResult::Type UChooseNextWaypoint::ExecuteTask (UBehaviorTreeComponent& Ow
 
 TArray<AActor*> UChooseNextWaypoint::GetPatrolPoints (UBehaviorTreeComponent& OwnerComp)
 {
-	auto PatrollingGuard = Cast<APatrollingGuard> (OwnerComp.GetAIOwner()->GetPawn());
+	auto PatrolRouteComponent = OwnerComp.GetAIOwner()->GetPawn()->FindComponentByClass<UPatrolRouteComponent> ();
 
-	return PatrollingGuard->GetPatrolPoints ();
+	if (ensure (PatrolRouteComponent)) {
+		return PatrolRouteComponent->GetPatrolPoints ();
+	}
+
+	// The component wasn't found, return an empty array.
+	TArray<AActor*> PatrolPoints;
+	return PatrolPoints;
 }
 
 int32 UChooseNextWaypoint::SetNextWaypoint (UBlackboardComponent& BlackboardComp, TArray<AActor*> PatrolPoints)
