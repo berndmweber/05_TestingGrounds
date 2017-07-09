@@ -27,6 +27,7 @@ class AFirstPersonCharacter : public ACharacter
 
 private:
 	AGun* Gun;
+	UInputComponent* InputComponent;
 
 public:
 	AFirstPersonCharacter();

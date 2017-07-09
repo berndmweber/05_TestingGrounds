@@ -34,8 +34,8 @@ public:
 	class USoundBase* FireSound;
 
 	/** The animation object for the arms mesh */
-	UPROPERTY (EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
-	class UAnimInstance* AnimInstance = nullptr;
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Gameplay")
+	class UAnimInstance* AnimInstance;
 
 	/** AnimMontage to play each time we fire */
 	UPROPERTY (EditAnywhere, BlueprintReadWrite, Category = "Gameplay")
@@ -47,10 +47,10 @@ public:
 	// Called every frame
 	virtual void Tick (float DeltaTime) override;
 
+	/** Fires a projectile. */
+	void OnFire ();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	/** Fires a projectile. */
-	void OnFire ();
 };
