@@ -22,7 +22,7 @@ void ANPCCharacter::BeginPlay ()
 
 	auto Mesh = GetMesh ();
 	//Attach gun mesh component to Skeleton, doing it here because the skeleton is not yet created in the constructor
-	Gun = GetWorld ()->SpawnActor<AGun> (GunBlueprint);
-	Gun->AttachToComponent (Mesh, FAttachmentTransformRules (EAttachmentRule::SnapToTarget, true), TEXT ("GripPoint"));
-	Gun->GunMesh->SetRelativeRotation (FRotator (0.0f, 160.0f, 0.0f));
+	//Gun = GetWorld ()->SpawnActor<AGun> (GunBlueprint);
+	//Gun->AttachToComponent (Mesh, FAttachmentTransformRules (EAttachmentRule::SnapToTarget, true), TEXT ("GripPoint"));
+	//Gun->GunMesh->SetRelativeRotation (FRotator (0.0f, 160.0f, 0.0f));
 }
